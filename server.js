@@ -12,6 +12,7 @@ dotenv.config({ path: "./config/config.env"})
 const app = express();
 const PORT = process.env.PORT || 3000
 
+app.use(express.json());
 
 // connect to db
 connectDB()
@@ -19,7 +20,7 @@ connectDB()
 // Import Routes
 const decadesRoutes = require('./routes/decades')
 
-app.use('/api/v1/decades', decadesRoutes)
+app.use(decadesRoutes)
 
 const server = app.listen(PORT, () => {
     console.log(`Server listening in ${process.env.NODE_ENV} on port ${PORT}`)
