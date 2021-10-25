@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
+const geocoder = require('../utils/geocoder');
 
 const ArtistSchema = new mongoose.Schema({
     artist: {
@@ -38,6 +40,29 @@ const ArtistSchema = new mongoose.Schema({
         maxlength: [60, "Song name can be no longer than 60 characters"],
         trim: true
     },
+    firstAlbum: {
+        type: String,
+        required: true,
+        maxlength: [70, "Please enter an album name no longer than 70 characters"],
+        trim: true
+    },
+    location: {
+        type: String,
+        require: [true, 'please provide a location']
+    },
+    foundedAt: {
+        type: {
+          type: String,
+          enum: ['Point'],
+        },
+        coordinates: {
+          type: [Number, Number],
+        },
+        city: String,
+        state: String,
+        zipcode: String,
+        country: String
+      },
     active: {
         type: Boolean,
         default: false
@@ -48,4 +73,31 @@ const ArtistSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Artist", ArtistSchema)
+// ================
+// MIDDLEWARE
+// =================
+ArtistSchema.pre('save', function (next) {
+    this.slug = slugify(this.artist, {
+        lower: true,
+        replacement: '_'
+    });
+    next();
+});
+
+// Geocode and create location
+ArtistSchema.pre('save', async function (next) {
+    const e = await geocoder.geocode(this.location);
+    const loc = e[0]
+    this.foundedAt = {
+        type: "Point",
+        coordinates: [loc.longitude, loc.latitude],
+        city: loc.city,
+        state: loc.stateCode,
+        zipcode: loc.zipcode,
+        country: loc.countryCode
+    }
+    this.location = undefined;
+    next();
+});
+
+module.exports = mongoose.model("Artist", ArtistSchema);
