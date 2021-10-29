@@ -8,7 +8,7 @@ const ArtistSchema = new mongoose.Schema({
         required: [true, "Please add a designated decade"],
         unique: [true, "That decade already exists"],
         trim: true,
-        maxlength: [15, "Decade name must be 15 characters or less"]
+        maxlength: [50, "Decade name must be 50 characters or less"]
     },
     slug: String,
     description: {
@@ -67,10 +67,24 @@ const ArtistSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    albums: {
+        type: Number,
+        required: true
+    },
+    averageStreams: {
+        // Average of amount of times songs were streamed
+        type: Number
+    },
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+},
+{
+    toJSON: {virtuals: true},
+    toObject: {virtuals: true},
+    id: false
+
 });
 
 // ================
@@ -99,5 +113,23 @@ ArtistSchema.pre('save', async function (next) {
     this.location = undefined;
     next();
 });
+
+// ================
+// VIRTUALS
+// =================
+// Reverse populate with virtuals
+ArtistSchema.virtual('songs', {
+    ref: 'Song',
+    "localField": '_id',
+   "foreignField": 'artist',
+   justOne: false
+})
+
+// Cascade Deletion
+ArtistSchema.pre('remove', async function (next) {
+    console.log(`Songs being deleted from Artist ${this.artist}`)
+    await this.model('Song').deleteMany({artist: this._id})
+    next()
+})
 
 module.exports = mongoose.model("Artist", ArtistSchema);

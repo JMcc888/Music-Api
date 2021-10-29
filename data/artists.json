@@ -1,0 +1,35 @@
+[
+    {
+        "_id": "61794615438f306c0396f9b0",
+        "artist": "Teddy Pendergrass",
+        "description": "GOAT 2",
+        "youtubeLink": "https://www.youtube.com/channel/UCZWdbVjofcSWVus4_dt9ngA",
+        "wikiBio": "https://en.wikipedia.org/wiki/Teddy_Pendergrass",
+        "topSong": "Love TKO",
+        "firstAlbum": "Teddy Pendergrass",
+        "location": "Philadelphia, PA",
+        "albums": "12"
+    },
+    {
+        "_id": "61794626aeaac67ff5620aed",
+        "artist": "Dean Martin",
+        "description": "He's chill",
+        "youtubeLink": "https://www.youtube.com/channel/UCt5XRcb5A8pGtdlTWYlGQrQ",
+        "wikiBio": "https://en.wikipedia.org/wiki/Dean_Martin",
+        "topSong": "Everybody Loves Somebody",
+        "firstAlbum": "Dean Martin Sings",
+        "location": "Steubenville, Ohio",
+        "albums": "7"
+    },
+    {
+        "_id": "61794634d23ea74666cf8205",
+        "artist": "Rick James",
+        "description": "MARY JAAAANE",
+        "youtubeLink": "https://www.youtube.com/channel/UCtEhORxlvDIWLus1iOoIZ8Q",
+        "wikiBio": "https://en.wikipedia.org/wiki/Rick_James",
+        "topSong": "Super Freak",
+        "firstAlbum": "Come Get It!",
+        "location": "Buffalo, New York, 14201",
+        "albums": "8"
+    }
+]

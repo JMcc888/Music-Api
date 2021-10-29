@@ -1,7 +1,8 @@
-// Import NPM Packages
+// Import NPM/Node Packages
+const path = require('path')
 const express = require('express');
 const dotenv = require('dotenv');
-
+const fileupload = require('express-fileupload')
 // Import Local Files
 const connectDB = require('./config/connectdb');
 const errorHandler = require('./middleware/errorhandler')
@@ -18,10 +19,18 @@ app.use(express.json());
 // connect to db
 connectDB()
 
+// File Uploading
+app.use(fileupload())
+
+// Set Static folder
+app.use(express.static(path.join(__dirname, "public")))
+
 // Import Routes
 const decadesRoutes = require('./routes/decades')
+const songRoutes = require('./routes/songs')
 
-app.use(decadesRoutes)
+app.use("/api/v1/decades", decadesRoutes);
+app.use("/api/v1/songs", songRoutes);
 
 const server = app.listen(PORT, () => {
     console.log(`Server listening in ${process.env.NODE_ENV} on port ${PORT}`)

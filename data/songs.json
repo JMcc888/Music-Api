@@ -1,0 +1,41 @@
+[
+    {
+        "_id": "617afd909070a8e83d8941ca",
+        "title": "Close The Door",
+        "description": "Seggs music😳",
+        "billboardPeak": 1,
+        "recorded": 1972,
+        "album": "Teddy Pendergrass",
+        "single": false,
+        "bpm": 177,
+        "decade": "70",
+        "artist": "61794615438f306c0396f9b0",
+        "streams": "1001"
+    },
+    {
+        "_id": "617afd909070a8e83d8941cb",
+        "title": "Mary Jane",
+        "description": "Good Time Music🗿",
+        "billboardPeak": 1,
+        "recorded": 1972,
+        "album": "Come Get It!",
+        "single": false,
+        "bpm": 177,
+        "decade": "70",
+        "artist": "61794634d23ea74666cf8205",
+        "streams": "1001"
+    },
+    {
+        "_id": "617afd909070a8e83d8941cc",
+        "title": "Sway",
+        "description": "Good Music",
+        "billboardPeak": 1,
+        "recorded": 1953,
+        "album": "Hey Brother, Pour The Wine",
+        "single": false,
+        "bpm": 177,
+        "decade": "50",
+        "artist": "61794626aeaac67ff5620aed",
+        "streams": "1100"
+    }
+]
