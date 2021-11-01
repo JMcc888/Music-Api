@@ -4,7 +4,7 @@ const asyncHandler = require('../middleware/asynchandler')
 const geocoder = require('../utils/geocoder')
 const path = require('path')
 
-exports.getDecades = asyncHandler(async (req, res, next) => {
+exports.getArtists = asyncHandler(async (req, res, next) => {
 
     res.status(200).json(res.advancedResults)
 
@@ -17,7 +17,7 @@ exports.getDecades = asyncHandler(async (req, res, next) => {
     //     });
 });
 
-exports.getDecade = asyncHandler(async (req, res, next) => {
+exports.getArtist = asyncHandler(async (req, res, next) => {
         const artist = await Artist.findById(req.params.id);
         if (!artist) {
             return next(new ErrorHandler(`Artist not found with ID of ${req.params.id}`, 404));
@@ -29,7 +29,7 @@ exports.getDecade = asyncHandler(async (req, res, next) => {
     
 });
 
-exports.updateDecade = asyncHandler(async (req, res, next) => {
+exports.updateArtist = asyncHandler(async (req, res, next) => {
 
         const artist = await Artist.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
@@ -44,7 +44,7 @@ exports.updateDecade = asyncHandler(async (req, res, next) => {
         });
 
 });
-exports.deleteDecade = asyncHandler(async (req, res, next) => {
+exports.deleteArtist = asyncHandler(async (req, res, next) => {
         const artist = await Artist.findById(req.params.id)
         if (!artist) {
             return next(new ErrorHandler(`Artist not found with ID of ${req.params.id}`, 404));
@@ -60,7 +60,7 @@ exports.deleteDecade = asyncHandler(async (req, res, next) => {
 
 });
 
-exports.createDecade = asyncHandler(async (req, res, next) => {
+exports.createArtist = asyncHandler(async (req, res, next) => {
       const newArtist = await Artist.create(req.body)
     res.status(201).json({
         success: true,
@@ -81,22 +81,22 @@ exports.getArtistsInRadius = asyncHandler(async (req, res, next) => {
     console.log(lat, lng)
     res.send('test')
 
-    // // Calculate radius using radians
-    //     // Divide the given distance by the radius of earth
-    // const earthRadiusInMiles = 3959
-    // const radius = distanceInMiles / earthRadiusInMiles;
+    // Calculate radius using radians
+        // Divide the given distance by the radius of earth
+    const earthRadiusInMiles = 3959
+    const radius = distanceInMiles / earthRadiusInMiles;
 
-    // // Query DB and return response
-    // const artists = await Artist.find({
-    //     location: {$geoWithin: { $centerSphere: [ [ lng, lat ], radius ] }}
-    // })
+    // Query DB and return response
+    const artists = await Artist.find({
+        foundedAt: {$geoWithin: { $centerSphere: [ [ lng, lat ], radius ] }}
+    })
 
 
-    // res.status(200).json({
-    //     success: true,
-    //     count: artists.length,
-    //     data: artists
-    // })
+    res.status(200).json({
+        success: true,
+        count: artists.length,
+        data: artists
+    })
 });
 
 exports.uploadArtistPhoto = asyncHandler(async (req, res, next) => {

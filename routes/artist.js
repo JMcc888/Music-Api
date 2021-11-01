@@ -3,7 +3,7 @@ const router = express.Router();
 const advancedResults = require('../middleware/advancedResults')
 const Artist = require('../models/artist')
 
-const  { getDecade, getDecades, createDecade, updateDecade, deleteDecade, getArtistsInRadius, uploadArtistPhoto} = require('../controllers/decades')
+const  { getArtist, getArtists, createArtist, updateArtist, deleteArtist, getArtistsInRadius, uploadArtistPhoto} = require('../controllers/artist')
 
 
 // Include other resource routers
@@ -14,8 +14,8 @@ router.use('/:id/songs', songRouter)
 
 
 
-router.route('/').get(advancedResults(Artist, 'songs'), getDecades).post(createDecade)
+router.route('/').get(advancedResults(Artist, 'songs'), getArtists).post(createArtist)
 router.route('/radius').get(getArtistsInRadius);
-router.route('/:id').get(getDecade).put(updateDecade).delete(deleteDecade)
+router.route('/:id').get(getArtist).put(updateArtist).delete(deleteArtist)
 router.route('/:id/photo').put(uploadArtistPhoto)
 module.exports = router

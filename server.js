@@ -26,10 +26,10 @@ app.use(fileupload())
 app.use(express.static(path.join(__dirname, "public")))
 
 // Import Routes
-const decadesRoutes = require('./routes/decades')
+const artistsRoutes = require('./routes/artist')
 const songRoutes = require('./routes/songs')
 
-app.use("/api/v1/decades", decadesRoutes);
+app.use("/api/v1/artists", artistsRoutes);
 app.use("/api/v1/songs", songRoutes);
 
 const server = app.listen(PORT, () => {
