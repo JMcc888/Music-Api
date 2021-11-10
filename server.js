@@ -3,6 +3,8 @@ const path = require('path')
 const express = require('express');
 const dotenv = require('dotenv');
 const fileupload = require('express-fileupload')
+const cookieParser = require('cookie-parser'
+)
 // Import Local Files
 const connectDB = require('./config/connectdb');
 const errorHandler = require('./middleware/errorhandler')
@@ -16,6 +18,9 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.json());
 
+// Cookie Parser
+app.use(cookieParser())
+
 // connect to db
 connectDB()
 
@@ -28,9 +33,12 @@ app.use(express.static(path.join(__dirname, "public")))
 // Import Routes
 const artistsRoutes = require('./routes/artist')
 const songRoutes = require('./routes/songs')
+const authRoutes = require('./routes/auth')
 
+// Use Routes
 app.use("/api/v1/artists", artistsRoutes);
 app.use("/api/v1/songs", songRoutes);
+app.use("/api/v1/auth", authRoutes)
 
 const server = app.listen(PORT, () => {
     console.log(`Server listening in ${process.env.NODE_ENV} on port ${PORT}`)

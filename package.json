@@ -13,9 +13,12 @@
   "author": "Johnny",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.11",
     "node-geocoder": "^3.27.0",
     "slugify": "^1.6.1"
