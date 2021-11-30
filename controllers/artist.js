@@ -31,13 +31,22 @@ exports.getArtist = asyncHandler(async (req, res, next) => {
 
 exports.updateArtist = asyncHandler(async (req, res, next) => {
 
-        const artist = await Artist.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        });
+    let artist = await Artist.findById(req.params.id)
+
         if (!artist) {
             return next(new ErrorHandler(`Artist not found with ID of ${req.params.id}`, 404));
         }
+
+        // Ensure User is univeristy owner
+        if(artist.user.toString() !== req.user.id && req.user.role !== 'admin') {
+            return next(new ErrorHandler(`User ${req.user.id} not authorized to update this resource`, 403));
+        }
+
+        artist = await Artist.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+
         res.status(200).json({
             success: true,
             data: artist
@@ -50,6 +59,11 @@ exports.deleteArtist = asyncHandler(async (req, res, next) => {
             return next(new ErrorHandler(`Artist not found with ID of ${req.params.id}`, 404));
         }
 
+                // Ensure User is univeristy owner
+                if(artist.user.toString() !== req.user.id && req.user.role !== 'admin') {
+                    return next(new ErrorHandler(`User ${req.user.id} not authorized to delete this resource`, 403));
+                }
+
         artist.remove()
 
         res.status(200).json({
@@ -61,6 +75,16 @@ exports.deleteArtist = asyncHandler(async (req, res, next) => {
 });
 
 exports.createArtist = asyncHandler(async (req, res, next) => {
+
+    // Check if user has already created artist
+    const publishedArtist = await Artist.findOne({user: req.user.id})
+    if (publishedArtist && req.user.role !== 'admin') {
+        return next(new ErrorHandler('This user has already created an artist'), 400)
+    }
+
+
+
+    req.body.user = req.user.id
       const newArtist = await Artist.create(req.body)
     res.status(201).json({
         success: true,
@@ -106,6 +130,12 @@ exports.uploadArtistPhoto = asyncHandler(async (req, res, next) => {
     if (!artist) {
         return next(new ErrorHandler(`Artist not found with ID of ${req.params.id}`, 404));
     }
+
+        // Ensure User is univeristy owner
+        if(artist.user.toString() !== req.user.id && req.user.role !== 'admin') {
+            return next(new ErrorHandler(`User ${req.user.id} not authorized to update this resource`, 403));
+        }
+
     // Validate Image
 
     // Actually seems to work but postman wraps my images into a folder

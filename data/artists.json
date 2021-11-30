@@ -8,7 +8,8 @@
         "topSong": "Love TKO",
         "firstAlbum": "Teddy Pendergrass",
         "location": "Philadelphia, PA",
-        "albums": "12"
+        "albums": "12",
+        "user": "619d4dcdf9b13c3e26a2a30b"
     },
     {
         "_id": "61794626aeaac67ff5620aed",
@@ -19,7 +20,8 @@
         "topSong": "Everybody Loves Somebody",
         "firstAlbum": "Dean Martin Sings",
         "location": "Steubenville, Ohio",
-        "albums": "7"
+        "albums": "7",
+        "user": "619d4dd8648d73117d45bed5"
     },
     {
         "_id": "61794634d23ea74666cf8205",
@@ -30,6 +32,31 @@
         "topSong": "Super Freak",
         "firstAlbum": "Come Get It!",
         "location": "Buffalo, New York, 14201",
-        "albums": "8"
+        "albums": "8",
+        "user": "619d4ddf05f5fcdae08ff728"
+    },
+    {
+        "_id": "619d5118f4d8205a667bdbbb",
+        "artist": "Al Green",
+        "description": "GOAT",
+        "youtubeLink": "https://www.youtube.com/channel/UCiE5dPVpnFpPl8ki4QjLH5Q",
+        "wikiBio": "https://en.wikipedia.org/wiki/Al_Green",
+        "topSong": "Love And Happiness",
+        "firstAlbum": "Come Get It!",
+        "location": "Buffalo, New York, 14201",
+        "albums": "8",
+        "user": "619d4de7a96c2831635daa87"
+    },
+    {
+        "_id": "619d510eb83c3af671d1c777",
+        "artist": "Nat King Cole",
+        "description": "WOOOOOOOOOOO",
+        "youtubeLink": "https://www.youtube.com/channel/UCjP351k141Rq881npFWU2-g",
+        "wikiBio": "https://en.wikipedia.org/wiki/Nat_King_Cole",
+        "topSong": "L-O-V-E",
+        "firstAlbum": "Nat King Cole At The Piano",
+        "location": "Buffalo, New York, 14201",
+        "albums": "8",
+        "user": "619d545500a20b4571b43f34"
     }
 ]

@@ -8,6 +8,7 @@ dotenv.config({ path: "./config/config.env"})
 // Load models
 const Artist = require('./models/artist')
 const Song = require('./models/song')
+const User = require('./models/user')
 
 // Connect to DB
 mongoose.connect(process.env.DB_URI, {
@@ -17,10 +18,12 @@ mongoose.connect(process.env.DB_URI, {
 // Load JSON files
 const artists = JSON.parse(fs.readFileSync(`${__dirname}/data/artists.json`, 'utf-8'));
 const songs = JSON.parse(fs.readFileSync(`${__dirname}/data/songs.json`, 'utf-8'));
+const users = JSON.parse(fs.readFileSync(`${__dirname}/data/users.json`, 'utf-8'));
 
 // Load into DB
 const importData = async () => {
     try {
+        // await User.create(users)
         await Artist.create(artists)
         await Song.create(songs)
         console.log('working fine')
@@ -36,6 +39,7 @@ const deleteData = async () => {
     try {
         await Artist.deleteMany();
         await Song.deleteMany();
+        // await User.deleteMany();
         console.log('deletion is fine')
         process.exit(0)
     } catch (err) {

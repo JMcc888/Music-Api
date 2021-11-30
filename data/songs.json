@@ -10,7 +10,8 @@
         "bpm": 177,
         "decade": "70",
         "artist": "61794615438f306c0396f9b0",
-        "streams": "1001"
+        "streams": "1001",
+        "user": "619d4dcdf9b13c3e26a2a30b"
     },
     {
         "_id": "617afd909070a8e83d8941cb",
@@ -23,7 +24,8 @@
         "bpm": 177,
         "decade": "70",
         "artist": "61794634d23ea74666cf8205",
-        "streams": "1001"
+        "streams": "1001",
+        "user": "619d4ddf05f5fcdae08ff728"
     },
     {
         "_id": "617afd909070a8e83d8941cc",
@@ -36,6 +38,35 @@
         "bpm": 177,
         "decade": "50",
         "artist": "61794626aeaac67ff5620aed",
-        "streams": "1100"
+        "streams": "1100",
+        "user": "619d4dd8648d73117d45bed5"
+    },
+    {
+        "_id": "619d5118f4d8205a667bdbbb",
+        "title": "How Can You Mend A Broken Heart",
+        "description": "Sad🗿",
+        "billboardPeak": 1,
+        "recorded": 1972,
+        "album": "Al Green Sings",
+        "single": false,
+        "bpm": 177,
+        "decade": "70",
+        "artist": "61794634d23ea74666cf8205",
+        "streams": "1001",
+        "user": "619d4de7a96c2831635daa87"
+    },
+    {
+        "_id": "619d930fe3cf794afe9cb06e",
+        "title": "Nature Boy",
+        "description": "Hippie Music?",
+        "billboardPeak": 1,
+        "recorded": 1972,
+        "album": "Actually not sure",
+        "single": false,
+        "bpm": 177,
+        "decade": "70",
+        "artist": "619d510eb83c3af671d1c777",
+        "streams": "1001",
+        "user": "619d545500a20b4571b43f34"
     }
 ]

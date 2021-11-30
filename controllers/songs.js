@@ -56,6 +56,7 @@ exports.getSong = asyncHandler(async (req, res, next) => {
 exports.createSong = asyncHandler(async (req, res, next) => {
     // Update Request Body to add Artist ID
     req.body.artist = req.params.id
+    req.body.user = req.user.id
 
     // Get the artist
     const artist = await Artist.findById(req.params.id)
@@ -65,8 +66,14 @@ exports.createSong = asyncHandler(async (req, res, next) => {
         return next(new ErrorHandler(`No song with ID of ${req.params.id}`, 404))
     }
 
+        // Ensure User is univeristy owner
+        if(artist.user.toString() !== req.user.id && req.user.role !== 'admin') {
+            return next(new ErrorHandler(`User ${req.user.id} not authorized to add a song to artist ${artist._id}`, 403));
+        }
+    
     // Create song, assigning to artist
     const song = await Song.create(req.body)
+    // Includes id of artist and user id
 
     // Response
     res.status(201).json({
@@ -82,6 +89,11 @@ exports.updateSong = asyncHandler(async (req, res, next) => {
     if (!song) {
         return next(new ErrorHandler(`No song with ID of ${req.params.id}`, 404))
     }
+
+            // Ensure User is song owner
+            if(song.user.toString() !== req.user.id && req.user.role !== 'admin') {
+                return next(new ErrorHandler(`User ${req.user.id} not authorized to update this song ${song._id}`, 403));
+            }
 
     song = await Song.findByIdAndUpdate(req.params.songId, req.body, {
         new: true,
@@ -101,6 +113,11 @@ exports.deleteSong = asyncHandler(async (req, res, next) => {
     if (!song) {
         return next(new ErrorHandler(`No song with ID of ${req.params.id}`, 404))
     }
+
+                // Ensure User is song owner
+                if(song.user.toString() !== req.user.id && req.user.role !== 'admin') {
+                    return next(new ErrorHandler(`User ${req.user.id} not authorized to delete this song ${song._id}`, 403));
+                }
 
     await song.remove()
 

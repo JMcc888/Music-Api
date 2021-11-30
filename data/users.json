@@ -1,11 +1,38 @@
 [
     {
-        "email": "Boss@boss.com",
-        "password": "THEBIGBOSSLOL" 
+        "_id": "619d4dcdf9b13c3e26a2a30b",
+        "username": "pub1",
+        "email": "pub@pub.com",
+        "role": "publisher",
+        "password": "SomethingIcanremember" 
     },
     {
-        "email":"test1@test.com",
-        "password":"password100"   
+        "_id": "619d4dd8648d73117d45bed5",
+        "username": "admin",
+        "email": "admin@admin.com",
+        "role": "user",
+        "password": "SomethingIcanremember" 
+    },
+    {
+        "_id": "619d4ddf05f5fcdae08ff728",
+        "username": "userman",
+        "email": "user@usenet.com",
+        "role": "user",
+        "password": "SomethingIcanremember" 
+    },
+    {
+        "_id": "619d4de7a96c2831635daa87",
+        "username": "pub2",
+        "email": "pub@man.com",
+        "role": "publisher",
+        "password": "SomethingIcanremember" 
+    },
+    {
+        "_id": "619d545500a20b4571b43f34",
+        "username": "pub3",
+        "email": "pub@men.com",
+        "role": "publisher",
+        "password": "SomethingIcanremember" 
     }
 
 ]

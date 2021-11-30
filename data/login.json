@@ -1,0 +1,19 @@
+[
+    {
+        "email": "pub@pub.com",
+        "password": "SomethingIcanremember" 
+    },
+    {
+        "email": "admin@admin.com",
+        "password": "SomethingIcanremember"
+    },
+    {
+        "email": "user@usenet.com",
+        "password": "SomethingIcanremember"  
+    },
+    {
+        "email": "pub@man.com",
+        "password": "SomethingIcanremember" 
+    }
+
+]
