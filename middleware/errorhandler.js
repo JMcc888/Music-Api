@@ -10,14 +10,12 @@ const errorHandler = (err, req, res, next) => {
 
     // Mongoose bad id format
     if (err.name === "CastError") {
-        const message = `Object ID ${err.value} is invalid`;
+        const message = `Invalid resource id`;
         error = new ErrorResponse(message, 400);
     };
 
     // Mongoose duplicate key
-    // UNRESPONSIVE
     if (err.code === 11000) {
-        console.log('woo');
         const message = `Duplicate field value entered: ${Object.keys(err.keyValue)}`;
         error = new ErrorResponse(message, 400);
     }

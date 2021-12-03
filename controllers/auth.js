@@ -17,14 +17,6 @@ exports.registerUser = asyncHandler(async (req, res, next) => {
 
     // Create JWT Token
     sendTokenResponse(user, 201, res);
-  //   const token = user.getSignedJwtToken()
-
-
-  // res.status(201).json({
-  //     success: true,
-  //     data: user.username,
-  //     token
-  // });
   
 });
 
@@ -53,6 +45,21 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
 
     sendTokenResponse(user, 200, res);
 });
+
+// GET /api/v1/auth/logout (Logout)
+exports.logout = asyncHandler(async (req, res, next) => {
+  res.cookie('token', 'none', {
+    expires: new Date(Date.now() + 2 * 1000),
+    httpOnly: true,
+  })
+
+  res.status(200).json({
+    success: true,
+    data: {},
+  });
+});
+
+
 
 // GET /api/v1/auth/me (Current User)
 exports.getMe = asyncHandler(async (req, res, next) => {
