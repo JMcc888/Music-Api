@@ -75,6 +75,9 @@ const ArtistSchema = new mongoose.Schema({
         // Average of amount of times songs were streamed
         type: Number
     },
+    averageRating: {
+        type: Number
+    },
     createdAt: {
         type: Date,
         default: Date.now

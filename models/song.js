@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const SongSchema = mongoose.Schema({
     title: {
         type: String,
-        require: [true, "Please give a song title"],
+        required: [true, "Please give a song title"],
         trim: true
     },
     description: {
@@ -80,7 +80,7 @@ const SongSchema = mongoose.Schema({
 // Static for average streams
 
 SongSchema.statics.getAverageStreams = async function(id) {
-    console.log(`Calcing for ur mom with id of ${id}`)
+   // console.log(`Calcing for ur mom with id of ${id}`)
 
 
 // Aggregated Array Creation

@@ -10,10 +10,11 @@ const  { getArtist, getArtists, createArtist, updateArtist, deleteArtist, getArt
 
 // Include other resource routers
 const songRouter = require('./songs');
+const reviewRouter = require('./reviews');
 
 // Reroute into other resource routers
 router.use('/:id/songs', songRouter)
-
+router.use('/:id/reviews', reviewRouter)
 
 
 router.route('/').get(advancedResults(Artist, 'songs'), getArtists).post(protect, authorize('publisher', "admin"), createArtist)

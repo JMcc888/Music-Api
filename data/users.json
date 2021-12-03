@@ -33,6 +33,20 @@
         "email": "pub@men.com",
         "role": "publisher",
         "password": "SomethingIcanremember" 
+    },
+    {
+        "_id": "61a7eb22fdf4da7f5f15ddbd",
+        "email": "tp@tp.com",
+        "username": "TPHater",
+        "password": "SomethingIcanremember",
+        "role": "user"
+    },
+    {
+        "_id": "61a7eb4efdf4da7f5f15ddbf",
+        "email": "rj@rj.com",
+        "username": "RJHater",
+        "password": "SomethingIcanremember",
+        "role": "user"
     }
 
 ]

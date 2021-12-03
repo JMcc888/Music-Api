@@ -34,11 +34,15 @@ app.use(express.static(path.join(__dirname, "public")))
 const artistsRoutes = require('./routes/artist')
 const songRoutes = require('./routes/songs')
 const authRoutes = require('./routes/auth')
+const userRoutes = require('./routes/users')
+const reviewRoutes = require('./routes/reviews')
 
 // Use Routes
 app.use("/api/v1/artists", artistsRoutes);
 app.use("/api/v1/songs", songRoutes);
 app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/users", userRoutes)
+app.use("/api/v1/reviews", reviewRoutes)
 
 const server = app.listen(PORT, () => {
     console.log(`Server listening in ${process.env.NODE_ENV} on port ${PORT}`)
