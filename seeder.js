@@ -25,7 +25,7 @@ const reviews = JSON.parse(fs.readFileSync(`${__dirname}/data/reviews.json`, 'ut
 // Load into DB
 const importData = async () => {
     try {
-        await User.create(users)
+        //await User.create(users)
         await Artist.create(artists)
         await Song.create(songs)
         await Review.create(reviews)
@@ -42,7 +42,7 @@ const deleteData = async () => {
     try {
         await Artist.deleteMany();
         await Song.deleteMany();
-        await User.deleteMany();
+        //await User.deleteMany();
         await Review.deleteMany();
         console.log('deletion is fine')
         process.exit(0)
